@@ -8,7 +8,7 @@ ENV NOTVISIBLE "in users profile"
 # RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
 RUN apt-get update \
     # Install packages
-    && apt-get install -y curl wget vim openssh-server git \
+    && apt-get install -y iproute2 net-tools curl wget vim openssh-server git \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
