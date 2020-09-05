@@ -8,7 +8,7 @@ ENV NOTVISIBLE "in users profile"
  RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && apt-get update \
 # RUN apt-get update \
     # Install packages
-    && apt-get install -y curl wget vim openssh-server git \
+    && apt-get install -y curl wget vim openssh-server git htop \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -29,9 +29,11 @@ ENV NOTVISIBLE "in users profile"
     && mv code-server-3.5.0-${xos}-${xarch} rcoder \
     && mv rcoder /opt
 
+ENV PATH ${PATH}:/opt/rcoder/bin
+
 EXPOSE 22 8080
 
-WORKDIR /workdir
+WORKDIR /workspace
 
 COPY --chown=root:root startup.sh /
 
