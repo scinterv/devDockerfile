@@ -70,8 +70,11 @@ RUN cd .vim/bundle/ \
     && git clone --depth 1 https://github.com/christoomey/vim-tmux-navigator \
     && git clone --depth 1 https://github.com/ekalinin/Dockerfile.vim \
     # Theme
-    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized \
-    # Install and compile procvim.vim
+    && git clone --depth 1 https://github.com/altercation/vim-colors-solarized
+
+# Install and compile procvim.vim
+RUN mkdir -p .vim/colors \
+    && cp -r .vim/bundle/vim-colors-solarized/colors/solarized.vim .vim/colors/ \
     && git clone --depth 1 https://github.com/Shougo/vimproc.vim .vim/vimproc.vim \
     && cd .vim/vimproc.vim \
     && make
