@@ -3,7 +3,10 @@
 /opt/rcoder/bin/code-server --auth none --bind-addr "0.0.0.0:8080" & > dev/null
 
 # start jupyter notebook
-jupyter-notebook --no-browser --allow-root --ip='*' --port 8888 --NotebookApp.token='' --NotebookApp.password='' &> /dev/null &
+jupyter-notebook --no-browser --allow-root --ip='*' \
+    --port 8888 --NotebookApp.token=u'local-development' \
+    --NotebookApp.password='' \
+    &> /dev/null &
 
 # start up redis-service
 redis-server /etc/redis/redis.conf
